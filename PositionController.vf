@@ -1,0 +1,34 @@
+<apex:page Controller="PositionController" readOnly="true" tabStyle="Account" sidebar="false">
+    <head>
+        <apex:includescript value="//code.jquery.com/jquery-1.11.1.min.js"/>
+        <apex:includescript value="//cdn.datatables.net/1.10.4/js/jquery.dataTables.min.js"/>
+        <apex:stylesheet value="//cdn.datatables.net/1.10.4/css/jquery.dataTables.css"/>
+        <script>
+        j$ = jQuery.noConflict();
+        j$(document).ready( function () {
+            var accTable = j$('[id$="posiTable"]').DataTable({
+                });
+        });
+        </script>
+    </head>
+    <body>
+        <table id="posiTable" class="display">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Account Number</th>
+                    <th>Phone</th>
+                </tr>
+            </thead>
+            <tbody>
+                <apex:repeat value="{!posList}" var="posi">
+                    <tr>
+                        <td>{!posi.Position_Title__c}</td>
+                        <td>{!posi.Maximum_Pay__c}</td>
+                        <td>{!posi.Minimum_Pay__c}</td>
+                      </tr>
+                </apex:repeat>
+            </tbody>
+        </table>
+    </body>
+</apex:page>
